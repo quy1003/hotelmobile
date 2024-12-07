@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".RoomDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <!-- Carousel for Room Images -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:paddingBottom="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Placeholder for Dynamic Images -->
+                <ImageView
+                    android:id="@+id/imgRoomImage1"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:id="@+id/imgRoomImage2"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_marginEnd="8dp" />
+
+                <ImageView
+                    android:id="@+id/imgRoomImage3"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_marginEnd="8dp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Room Details -->
+        <TextView
+            android:id="@+id/tvRoomNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room Number: 101"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvPricePerNight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price: $150/night"
+            android:textColor="@color/lavender"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Availability: Available"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/lavender" />
+
+        <TextView
+            android:id="@+id/tvHotelName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Hotel Name: Luxury Hotel"
+            android:textSize="16sp"
+            android:textColor="@color/lavender"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category: Family"
+            android:textSize="16sp"
+            android:textColor="@color/lavender"
+            android:paddingBottom="16dp" />
+
+        <!-- Book Room Button -->
+        <Button
+            android:id="@+id/btnBookRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book This Room"
+            android:backgroundTint="@color/lavender"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+</ScrollView>

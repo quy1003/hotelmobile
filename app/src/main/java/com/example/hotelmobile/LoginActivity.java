@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Thông báo và chuyển màn hình
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginActivity.this, ListHotelManagerActivity.class));
+                    startActivity(new Intent(LoginActivity.this, UserBookingsActivity.class));
                     finish(); // Đóng màn hình đăng nhập
                 }
 

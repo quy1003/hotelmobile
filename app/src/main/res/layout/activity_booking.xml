@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".BookingActivity">
+
+    <TextView
+        android:id="@+id/dasdas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+
+        android:gravity="center"
+        android:letterSpacing="0.3"
+        android:padding="20dp"
+        android:shadowColor="#009688"
+        android:text="CHECK CONFIRMED"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvHotelName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Hotel Name -->
+    <TextView
+        android:id="@+id/tvHotelName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Hotel Name"
+        android:textColor="@color/lavender"
+        android:textSize="20sp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dasdas" />
+
+    <!-- Room Name -->
+    <TextView
+        android:id="@+id/tvRoomName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lavender"
+        android:text="Room"
+        android:textSize="20sp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHotelName" />
+
+    <!-- Start Date -->
+    <TextView
+        android:id="@+id/tvStartDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Start Date"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/lavender"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRoomName" />
+
+    <Button
+        android:id="@+id/btnStartDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Choose Start Date"
+        android:padding="16dp"
+        android:gravity="center"
+        android:backgroundTint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
+
+    <!-- End Date -->
+    <TextView
+        android:id="@+id/tvEndDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:textSize="16sp"
+        android:textColor="@color/lavender"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartDate" />
+
+    <Button
+        android:id="@+id/btnEndDate"
+        android:layout_width="200dp"
+        android:backgroundTint="@color/green"
+        android:layout_height="wrap_content"
+        android:text="Choose End Date"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEndDate" />
+
+    <!-- Total Price (This will be set by the system) -->
+    <TextView
+        android:id="@+id/tvTotalPrice"
+        android:layout_width="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:text="Total Price: "
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:textColor="@color/lavender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEndDate" />
+
+    <!-- Payment Status (This will be set by the system) -->
+    <TextView
+        android:id="@+id/tvPaymentStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Payment Status: Pending"
+        android:textSize="16sp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/lavender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPrice" />
+
+    <!-- Book Button -->
+    <Button
+        android:id="@+id/btnBookRoom"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Booking Now"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:backgroundTint="@color/blue"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPaymentStatus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

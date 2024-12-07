@@ -50,7 +50,7 @@ public class HotelDetail extends AppCompatActivity {
     private LinearLayout layoutHotelImages, layoutSelectedImages;
     private ListView listComments;
     private EditText etNewComment;
-    private Button btnChooseImages, btnSubmitComment;
+    private Button btnChooseImages, btnSubmitComment, btnListRooms;
     private RatingBar ratingBar;
     private List<Comment> comments;
     private CommentAdapter commentAdapter;
@@ -83,7 +83,13 @@ public class HotelDetail extends AppCompatActivity {
         btnSubmitComment = findViewById(R.id.btnSubmitComment);
         ratingBar = findViewById(R.id.ratingBar);
 
-
+        btnListRooms = findViewById(R.id.btnListRooms);
+        //Xem danh sách list room
+        btnListRooms.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getApplicationContext(), RoomList.class);
+            intent.putExtra("hotelId", hotelId); // selectedHotelId là ID của khách sạn
+            startActivity(intent);
+        });
         // Lấy hotelId từ Intent
         hotelId = getIntent().getIntExtra("hotel_id", -1);
         Log.d("HotelDetail", "Hotel ID: " + hotelId);

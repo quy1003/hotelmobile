@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentShorts"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ShortsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Tiêu đề -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvHotelListTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shorts Fragment"
-        android:textSize="30sp"
+        android:text="Hotel List"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:gravity="center"
-        android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
+        android:paddingBottom="16dp" />
 
-</RelativeLayout>
+    <!-- ListView hiển thị danh sách khách sạn -->
+    <ListView
+        android:id="@+id/listViewHotels"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/black"
+        android:dividerHeight="1dp" />
+</LinearLayout>

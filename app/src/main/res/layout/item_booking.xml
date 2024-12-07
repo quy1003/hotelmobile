@@ -1,0 +1,67 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:backgroundTint="@color/white"
+    android:background="@drawable/selected_thumbnail_border"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvHotelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Hotel Name"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/tvRoomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Name"
+        android:paddingTop="4dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvInvoiceCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invoice Code"
+        android:paddingTop="4dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvPaymentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Status"
+        android:paddingTop="4dp"
+        android:textColor="#008000"/>
+
+    <TextView
+        android:id="@+id/tvTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:paddingTop="4dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date"
+        android:paddingTop="4dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tvEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:paddingTop="4dp"
+        android:textColor="@color/black"/>
+</LinearLayout>

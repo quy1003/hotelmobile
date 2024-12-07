@@ -1,64 +1,92 @@
 package com.example.hotelmobile;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShortsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.example.hotelmobile.adapter.HotelAdapter;
+import com.example.hotelmobile.databaseHelper.HotelDBHelper;
+import com.example.hotelmobile.model.Hotel;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShortsFragment extends Fragment {
+    private ListView listViewHotels;
+    private HotelDBHelper hotelDBHelper;
+    private List<Hotel> hotelList;
+    private HotelAdapter hotelAdapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ShortsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShortsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShortsFragment newInstance(String param1, String param2) {
-        ShortsFragment fragment = new ShortsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    // BroadcastReceiver để cập nhật danh sách khách sạn
+    private final BroadcastReceiver hotelAddedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Gọi lại danh sách khách sạn khi nhận được broadcast
+            loadHotels();
         }
+    };
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Inflate layout của Fragment
+        View rootView = inflater.inflate(R.layout.fragment_shorts, container, false);
+
+        // Liên kết các thành phần giao diện
+        listViewHotels = rootView.findViewById(R.id.listViewHotels);
+        hotelDBHelper = new HotelDBHelper();
+        hotelList = new ArrayList<>();
+
+        // Thiết lập Adapter cho ListView
+        hotelAdapter = new HotelAdapter(getContext(), hotelList);
+        listViewHotels.setAdapter(hotelAdapter);
+
+        // Tải dữ liệu khách sạn
+        loadHotels();
+
+        return rootView;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shorts, container, false);
+    public void onStart() {
+        super.onStart();
+        // Đăng ký BroadcastReceiver
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(hotelAddedReceiver, new IntentFilter("HOTEL_ADDED"));
+        loadHotels(); // Gọi danh sách khách sạn khi Fragment bắt đầu
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Hủy đăng ký BroadcastReceiver
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(hotelAddedReceiver);
+    }
+
+    private void loadHotels() {
+        hotelDBHelper.getAllHotels(new HotelDBHelper.DataStatus() {
+            @Override
+            public void onDataLoaded(List<Hotel> hotels) {
+                hotelList.clear();
+                hotelList.addAll(hotels); // Cập nhật danh sách khách sạn
+                hotelAdapter.notifyDataSetChanged(); // Cập nhật giao diện
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
